@@ -1,0 +1,20 @@
+# Vivado project generated folders
+SAP-1 CPU.cache/
+SAP-1 CPU.hw/
+SAP-1 CPU.ip_user_files/
+SAP-1 CPU.runs/
+SAP-1 CPU.sim/
+
+# Logs
+*.jou
+*.log
+*.str
+
+# Crash dumps
+hs_err_pid*
+
+# Temporary
+.Xil/
+
+# Vivado checkpoints
+*.dcp
