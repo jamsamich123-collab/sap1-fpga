@@ -4,7 +4,7 @@ An implementation of the SAP-1 (Simple-As-Possible, 1st generation) 8-bit educat
 
 SAP-1 is the classic teaching CPU architecture from Albert Malvino's *Digital Computer Electronics*, designed to illustrate the fetch-decode-execute cycle with a minimal instruction set and a single shared internal bus.
 
-![demo](docs/demo/gif)
+![demo](docs/demo.gif)
 
 ## Features
 
@@ -20,7 +20,7 @@ SAP-1 is the classic teaching CPU architecture from Albert Malvino's *Digital Co
 
 ## Architecture
 
-![sap-1 FPGA.png](docs/sap-1 FPGA.png)
+![sap-1 FPGA.png](docs/sap-1FPGA.png)
 
 Data flows onto `W_bus` from exactly one source per clock cycle, selected by `bus_sel` from the Controller. 
 
