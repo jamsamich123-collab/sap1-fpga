@@ -35,6 +35,8 @@ entity CPU is
 Port (
     clk : in std_logic;
     clear: in std_logic;
+    
+    OUT_en : out std_logic; --for testing purposes
     data_output : out std_logic_vector(7 downto 0);
     bus_value : out std_logic_vector(7 downto 0)
  );
@@ -189,6 +191,8 @@ begin
                 W_bus <= "00000000";
         end case;
         
+        
+        OUT_en <= OUT_load; --for testing purposes
         bus_value <= W_bus;
     end process bus_mux;
 end Behavioral;

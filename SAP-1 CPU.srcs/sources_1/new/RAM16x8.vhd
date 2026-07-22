@@ -46,7 +46,7 @@ architecture Behavioral of ROM16x8 is
     subtype Word is std_logic_vector(7 downto 0);
     type grid_16x8 is array (0 to 15) of Word;
     
-    signal ROM : grid_16x8 := (
+    signal ROM : grid_16x8 := ( --default instruction used in the test bench
     0 => "00001000", -- LDA 8
     1 => "00011001", -- ADD 9
     2 => "11100000", -- OUT (value of 0e)

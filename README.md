@@ -1,6 +1,6 @@
 # SAP-1 CPU on Basys 3 FPGA
 
-An implementation of the SAP-1 (Simple-As-Possible, 1st generation) 8-bit educational CPU architecture, built in VHDL and running on a Digilent Basys 3 (Xilinx Artix-7) FPGA board.
+Designed and implemented an 8-bit SAP-1 CPU from scratch in VHDL on a Digilent Basys 3 FPGA. The project re-creates the fetch-decode-executre cycle/architecture of the sap-1 and debugging techniques, aswell as FPGA implementation using Xilinx Vivado. It also includes a toggleable manual/automatic clock which in combonation with the binary to BCD conversion display is useful for manual debugging.
 
 SAP-1 is the classic teaching CPU architecture from Albert Malvino's *Digital Computer Electronics*, designed to illustrate the fetch-decode-execute cycle with a minimal instruction set and a single shared internal bus.
 
@@ -23,6 +23,13 @@ SAP-1 is the classic teaching CPU architecture from Albert Malvino's *Digital Co
 ![sap-1 FPGA.png](docs/sap-1FPGA.png)
 
 Data flows onto `W_bus` from exactly one source per clock cycle, selected by `bus_sel` from the Controller. 
+
+## Design Decisions
+
+Most of my decisions where made with the goal of more literaly representing the cpu in VHDL so well registers like the accumulator for example could of been just a single in the top level folder I chose to make it its own modle. Doing this this way made debuging and timing everything a bit more difficult but I feel it greatly helped with understanding of VHDL.
+
+Rather then just displaying the binary code from the W_bus I also take the contents of the output register and put it through my own double dabble algorithm to display it on the 7 segment display on the FPGA. This was to help with debugging and also a fun thing to do 
+
 
 ## Instruction Set
 
@@ -58,11 +65,17 @@ Data flows onto `W_bus` from exactly one source per clock cycle, selected by `bu
 
 To load a program, edit the contents of the 16x8 grid signal in `ROM16x8` and re-synthesize.
 
+## Simulation
+
+![demo](docs/timingDiagram.png)
+
+The simulation test bench test the default program loaded into the ROM.
+
 ## Known Limitations / Future Work
 
 - Program memory (ROM) is fixed at synthesis time, no runtime program loading
 - sometime if you press the button clock too fast it can cause the bus to be loaded with incorrect values
-- code over all is pretty inefficient
+- currently the code prioritizes readability and modularity over FPGA optimization. In the future the goal is to reduce that amount of logic used and imporoves modules reuse
 - adding the ability to program memory and the program counter during runtime
 
 ## Acknowledgments
